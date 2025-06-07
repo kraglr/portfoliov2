@@ -7,6 +7,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import ArticleIcon from "@mui/icons-material/Article";
 import CloseIcon from "@mui/icons-material/Close";
+import PermPhoneMsgIcon from "@mui/icons-material/PermPhoneMsg";
 import "./navigation.scss";
 
 const Navigation = ({ scrollToSection, sectionRefs, activeSection }) => {
@@ -22,7 +23,7 @@ const Navigation = ({ scrollToSection, sectionRefs, activeSection }) => {
     { key: "about", icon: <PersonOutlineIcon />, label: "About" },
     { key: "resume", icon: <ArticleIcon />, label: "Resume" },
     // { key: "services", icon: <ArticleIcon />, label: "Services" },
-    // { key: "contact", icon: <ArticleIcon />, label: "Contact" },
+    { key: "contact", icon: <PermPhoneMsgIcon />, label: "Contact" },
   ];
 
   return (

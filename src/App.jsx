@@ -8,6 +8,7 @@ import About from "./components/Body/About/About";
 import Skills from "./components/Body/Skills/Skills";
 import { DarkModeContext } from "./contexts/darkModeContext.jsx";
 import Resume from "./components/Body/Resume/Resume.jsx";
+import Contact from "./components/Body/Contact/Contact.jsx";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -25,7 +26,7 @@ function App() {
     about: aboutRef,
     resume: resumeRef,
     // services: servicesRef,
-    // contact: contactRef,
+    contact: contactRef,
   };
 
   // Scroll to section function
@@ -140,50 +141,9 @@ function App() {
           </div>
         </section> */}
 
-        {/* <section
-          ref={contactRef}
-          id="contact"
-          className="min-h-screen bg-white text-gray-800 flex items-center justify-center p-8 mt-8 rounded-t-xl shadow-lg"
-        >
-          <div className="container mx-auto text-center py-16">
-            <h2 className="text-4xl font-bold mb-6 text-blue-700">
-              Contact Us
-            </h2>
-            <p className="text-lg leading-relaxed max-w-2xl mx-auto mb-12">
-              Have a project in mind or just want to say hello? Feel free to
-              reach out!
-            </p>
-            <form className="max-w-md mx-auto bg-gray-50 p-8 rounded-lg shadow-md">
-              <div className="mb-4">
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-              <div className="mb-4">
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-              <div className="mb-6">
-                <textarea
-                  placeholder="Your Message"
-                  rows="5"
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-y"
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out"
-              >
-                Send Message
-              </button>
-            </form>
-          </div>
-        </section> */}
+        <section ref={contactRef} id="contact" className="">
+          <Contact />
+        </section>
       </main>
 
       <footer className="">

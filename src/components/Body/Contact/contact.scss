@@ -1,0 +1,55 @@
+@import "../../../styles.scss";
+
+.contact-container {
+  @include themify($themes) {
+    background-color: themed("bgSoft");
+    color: themed("textColorSoft");
+
+    .contact-header {
+      h2 {
+        color: themed("textColorSoft");
+      }
+      div {
+        svg {
+          @include mobile {
+            display: none;
+          }
+          path {
+            stroke: themed("textColorSoft");
+          }
+        }
+      }
+    }
+    .contact-body {
+      .contact-info {
+        div {
+          div {
+            svg {
+              color: themed("textColor");
+            }
+            div {
+              h1 {
+                // font-weight: bolder !important;
+                // font-size: larger;
+              }
+            }
+          }
+        }
+      }
+      .contact-form {
+        form {
+          background-color: themed("bgSofter");
+          border: 1px solid themed("border");
+          input {
+            color: themed("textColorSoft");
+            border: 1px solid themed("border");
+          }
+          button {
+            background-color: themed("textColorSoft");
+            color: themed("bgSofter");
+          }
+        }
+      }
+    }
+  }
+}
