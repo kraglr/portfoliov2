@@ -2,6 +2,10 @@ $themes: (
   light: (
     textColor: #000,
     bg: white,
+    bgNav: #cce0ff,
+    // stronger blue tint for nav bg (light)
+    bgHighlight: #3366ff,
+    // bright blue for hover highlight (light)
     logo: darkblue,
     bgSoft: #f6f3f3,
     bgSofter: #edebeb,
@@ -11,6 +15,10 @@ $themes: (
   dark: (
     textColor: whitesmoke,
     bg: #222,
+    bgNav: #1a1a2e,
+    // deeper navy/navy-black for nav bg (dark)
+    bgHighlight: #5a79ff,
+    // electric blue for hover highlight (dark)
     logo: white,
     bgSoft: #333,
     bgSofter: #2a2a2a,
@@ -40,4 +48,15 @@ $themes: (
 
 @function themed($key) {
   @return map-get($theme-map, $key);
+}
+
+@mixin mobile {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: 1022px) {
+    @content;
+  }
 }

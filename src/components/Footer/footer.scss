@@ -1,0 +1,11 @@
+@import "../../styles.scss";
+.footer-container {
+  @include themify($themes) {
+    background-color: themed("bgSoft");
+    div {
+      .social-links {
+        color: themed("textColorSoft");
+      }
+    }
+  }
+}

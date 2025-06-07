@@ -4,14 +4,14 @@ import img from "../../../assets/img/viber_image_2025-06-07_12-21-23-240.jpg";
 
 const About = () => {
   return (
-    <div className="about-container mx-auto w-full">
-      <div className="w-[75%] mx-auto py-10">
+    <div className="about-container mx-auto w-full pt-16">
+      <div className="w-[90%] lg:w-[75%] xl:w-[75%] mx-auto py-10">
         <div className="container-header w-full text-center justify-center py-5">
-          <h1 className="font-jumbled text-4xl font-bold text-gray-800  text-center ">
+          <h1 className="font-jumbled text-4xl font-bold text-gray-800 text-center">
             About
           </h1>
 
-          <div className=" text-center mx-auto justify-center items-center">
+          <div className="text-center mx-auto justify-center items-center">
             <svg
               className="mx-auto text-center w-[300px]"
               viewBox="0 0 300 20"
@@ -22,21 +22,22 @@ const About = () => {
                 d="M 0,10 C 60,0 90,20 150,10 C 210,0 240,20 300,10"
                 fill="none"
                 // stroke="#3c85c9"
-                stroke-width="2"
-              ></path>
+                strokeWidth="2"
+              />
             </svg>
           </div>
           <div className="w-[75%] mx-auto"></div>
         </div>
+
         <div className="container-body my-3 about-container-body">
           <div className="grid xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 grid-cols-1 gap-3">
-            <div className="about-img col-span-1 p-16  items-center align-middle my-auto justify-center">
-              <img src={img} alt="" className="mx-auto my-auto " />
+            <div className="about-img col-span-1 lg:p-16 md:p-10 p-2 items-center align-middle my-auto justify-center">
+              <img src={img} alt="About Image" className="mx-auto my-auto" />
             </div>
-            <div className="about-content col-span-1 p-7">
+
+            <div className="about-content col-span-1 py-7 px-3">
               <div className="about-header my-3 px-3 py-2">
-                {/* <span className="text-[#3c85c9] larger">About me</span> */}
-                <h2 className="font-jumbled">Full Stack Web Developer</h2>
+                <h2 className="font-jumbled text-center my-3">Web Developer</h2>
                 <p className="text-justify">
                   Web Developer with 3 years of experience in designing,
                   developing, and maintaining responsive websites and web
@@ -49,7 +50,8 @@ const About = () => {
                   that meet business needs.
                 </p>
               </div>
-              <div className="card shadow-md  personal-info p-5 my-3">
+
+              <div className="card shadow-md personal-info p-5 my-3 overflow-auto">
                 <div className="grid xl:grid-cols-2 lg:grid-cols-1 md:grid-cols-1 grid-cols-1 gap-4">
                   <div className="col-span-1">
                     <div className="info-item flex flex-col gap-3">

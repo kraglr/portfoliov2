@@ -1,33 +1,109 @@
-.container {
-  @include themify($themes) {
-    .skills-container {
-      // background-color: white;
-      div {
-        background-color: themed("bg");
-        padding: 0.6rem 1rem;
-        border-radius: 12.5px;
+@import "../../../styles.scss"; // Double-check this path to your main styles.scss
 
-        .skill-box {
-          .progress {
-            width: 90%;
-            background-color: color-mix(
-              in srgb,
-              var(--accent-color),
-              transparent 85%
-            );
-            border-radius: 50px;
-            height: 8px;
-            margin-top: 5px;
-            overflow: hidden;
-            .progress-bar {
-              background-color: #3c85c9;
-              height: 100%;
-              position: relative;
-              border-radius: 50px;
-              transition: 0.9s;
-              width: 1px;
-            }
+// --- CRUCIAL Slick Carousel specific styles for equal height ---
+.slick-track {
+  display: flex !important;
+  align-items: stretch !important; /* Forces all flex items (slides) to match the height of the tallest */
+}
+
+.slick-slide {
+  height: auto !important; /* Allow the slide to adapt height based on stretched content */
+  display: flex !important; /* Make each slide a flex container */
+  flex-direction: column !important; /* Allow content inside to be flexed vertically */
+
+  // This targets the direct div wrapper that react-slick often puts around your component
+  > div {
+    height: 100% !important; /* Make this wrapper fill the slide's height */
+    display: flex !important; /* Make it a flex container too */
+    flex-direction: column !important; /* So its child (the px-3 div) can stretch */
+
+    // This targets the div with class "px-3" that you have inside slick-slide > div
+    // It overrides the inline "display: inline-block;"
+    .px-3 {
+      height: 100% !important; // Make it fill the height
+      display: flex !important; // Crucial: change to flex
+      flex-direction: column !important; // So content inside can also be flexed
+    }
+  }
+}
+
+// --- Your themed and skill-box specific styles ---
+.skills-container {
+  @include themify($themes) {
+    background-color: themed("bgSoft");
+
+    // --- Themed styles for Slick Carousel Arrows and Dots ---
+    .slick-slider {
+      // Correctly target the ::before pseudo-element for arrows
+      .slick-prev::before,
+      .slick-next::before {
+        color: themed(
+          "textColor"
+        ) !important; // Apply theme color to the actual arrow icon
+        opacity: 1 !important; // Ensure full visibility, as slick often sets opacity
+      }
+
+      // Style for the pagination dots container
+      .slick-dots {
+        bottom: -30px; // Adjust position as needed, default is often too high
+        li {
+          margin: 0 1px; // Spacing between dots
+
+          button::before {
+            font-size: 10px; // Size of the dot icon (usually a circle)
+            color: themed(
+              "textColorSoft"
+            ) !important; // Color for inactive dots
+            opacity: 0.75; // Make inactive dots slightly faded
           }
+        }
+        // Style for the active dot
+        li.slick-active button::before {
+          color: themed("textColor") !important; // Color for active dot
+          opacity: 1; // Full opacity for active dot
+        }
+      }
+    }
+    // --- End of Themed styles for Slick Carousel Arrows and Dots ---
+
+    .skill-box {
+      background-color: themed("bg");
+      padding: 0.6rem 1rem;
+      border-radius: 12.5px;
+      height: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+
+      p {
+        flex-grow: 1;
+        margin-bottom: 0.5rem;
+      }
+
+      h3 {
+        color: themed("textColorSoft");
+      }
+      p,
+      span {
+        color: themed("textColorSoft");
+      }
+      .progress {
+        width: 90%;
+        background-color: color-mix(
+          in srgb,
+          var(--accent-color),
+          transparent 85%
+        );
+        border-radius: 50px;
+        height: 8px;
+        margin-top: 5px;
+        overflow: hidden;
+        .progress-bar {
+          background-color: #3c85c9;
+          height: 100%;
+          position: relative;
+          border-radius: 50px;
+          transition: 0.9s;
+          width: 1px;
         }
       }
     }

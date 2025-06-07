@@ -17,6 +17,9 @@
         }
         div {
           svg {
+            @include mobile {
+              display: none;
+            }
             path {
               stroke: themed("textColorSoft");
             }
@@ -34,6 +37,12 @@
               object-fit: cover;
               max-height: 500px;
               width: 450px;
+              @include tablet {
+                max-height: 450px;
+              }
+              @include mobile {
+                max-height: 200px;
+              }
             }
           }
           .about-content {

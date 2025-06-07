@@ -1,0 +1,25 @@
+@import "../../../styles.scss";
+
+.resume-container {
+  @include themify($themes) {
+    background-color: themed("bg");
+    color: themed("textColorSoft");
+    p {
+      text-justify: auto;
+    }
+    h2 {
+      font-size: xx-large;
+      font-weight: bolder;
+    }
+    div {
+      svg.curved-line {
+        @include mobile {
+          display: none;
+        }
+        path {
+          stroke: themed("textColorSoft");
+        }
+      }
+    }
+  }
+}

@@ -1,10 +1,13 @@
 @import "../../../styles.scss";
 #home {
   min-width: 100%;
+  min-height: 100vh;
+  height: 100vh;
   @include themify($themes) {
     background-color: themed("bgSoft");
     color: themed("textColor");
     div {
+      align-items: center;
     }
   }
 }

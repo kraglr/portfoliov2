@@ -1,7 +1,8 @@
 import React from "react";
-// Removed: import "./skills.scss"; as it caused a compilation error
-// Removed: import LinearProgress from "@mui/material/LinearProgress";
-// Removed: import Box from "@mui/material/Box"; // Box is no longer strictly needed for progress, but keeping if other MUI components rely on it.
+import Slider from "react-slick";
+import "./skills.scss"; // Your custom SCSS
+import "slick-carousel/slick/slick.css"; // Slick carousel CSS
+import "slick-carousel/slick/slick-theme.css"; // Slick carousel theme CSS
 
 const Skills = () => {
   // Helper function to render stars based on a rating out of 5
@@ -58,7 +59,7 @@ const Skills = () => {
       stars.push(
         <svg
           key={`empty-${i}`}
-          className="w-6 h-6 text-gray-300 inline-block"
+          className="w-6 h-6 text-gray-500 inline-block"
           fill="currentColor"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
@@ -71,67 +72,126 @@ const Skills = () => {
     return <div className="flex items-center justify-start">{stars}</div>;
   };
 
+  // React Slick settings
+  const settings = {
+    dots: true, // Show navigation dots
+    infinite: true, // Loop the carousel
+    speed: 500, // Transition speed
+    slidesToShow: 4, // Show 4 slides at a time
+    slidesToScroll: 1, // Scroll 1 slide at a time
+    autoplay: true, // Auto-play the carousel
+    autoplaySpeed: 2000, // Auto-play speed in milliseconds
+    responsive: [
+      {
+        breakpoint: 1200, // For screens larger than 1200px (xl)
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 992, // For screens larger than 992px (lg)
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768, // For screens larger than 768px (md)
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+      {
+        breakpoint: 576, // For screens smaller than 576px (sm)
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+
+  // An array of your skill data to easily map over
+  const skillsData = [
+    {
+      name: "HTML",
+      description:
+        "Proficient in creating well-structured, semantic, and accessible web content using the latest HTML5 standards.",
+      rating: 4.5,
+    },
+    {
+      name: "CSS",
+      description:
+        "Skilled in crafting visually appealing and responsive layouts using modern CSS techniques, including Flexbox, Grid, and animations.",
+      rating: 4.75,
+    },
+    {
+      name: "JavaScript",
+      description:
+        "Comprehensive understanding of JavaScript (ES6+) for dynamic client-side scripting, interactive web features, and asynchronous operations.",
+      rating: 4.0,
+    },
+    {
+      name: "SQL",
+      description:
+        "Solid experience in designing, querying, and managing relational databases using SQL for efficient data retrieval and manipulation.",
+      rating: 4.0,
+    },
+    {
+      name: "React",
+      description:
+        "Expertise in building scalable, interactive, and high-performance user interfaces with modern React.js practices and component-based architecture.",
+      rating: 4.0,
+    },
+    {
+      name: "Node.js",
+      description:
+        "Proficient in server-side development, building robust RESTful APIs, and handling data persistence with Node.js and related frameworks like Express.",
+      rating: 4.0,
+    },
+    {
+      name: "Bootstrap",
+      description:
+        "Experienced in using Bootstrap for rapid development of responsive, mobile-first web projects with pre-built components and styling.",
+      rating: 4.9,
+    },
+    {
+      name: "Tailwind CSS",
+      description:
+        "A utility-first CSS framework for rapid UI development and highly customizable designs, ensuring responsive and consistent styling.",
+      rating: 4.0,
+    },
+    {
+      name: "Laravel",
+      description:
+        "Adept at building robust, secure, and scalable web applications using the Laravel PHP framework and its rich ecosystem.",
+      rating: 4.6,
+    },
+  ];
+
   return (
-    <div className="p-4 md:p-8 lg:p-16 mx-auto max-w-7xl">
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-cols-1">
-        {/* HTML Skill Card */}
-        <div className="shadow-md rounded-lg p-6 bg-white transition-all ease-in-out duration-300">
-          <div className="flex flex-col h-full">
-            <h3 className="text-2xl font-semibold mb-2 text-gray-800">HTML</h3>
-            <p className="text-gray-600 mb-4 flex-grow">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem.
-            </p>
-            {/* Display percentage and stars based on 5-star rating */}
-            <span className="text-right text-lg font-medium text-gray-700 block mb-2">
-              4.5/5
-            </span>
-            {renderStars(4.5)} {/*4.5 of 5 stars is 4.5 */}
-          </div>
-        </div>
-
-        {/* CSS Skill Card */}
-        <div className="shadow-md rounded-lg p-6 bg-white transition-all ease-in-out duration-300">
-          <div className="flex flex-col h-full">
-            <h3 className="text-2xl font-semibold mb-2 text-gray-800">CSS</h3>
-            <p className="text-gray-600 mb-4 flex-grow">
-              Nemo enim ipsam voluptatem quia voluptas sit aspernatur.
-            </p>
-            <span className="text-right text-lg font-medium text-gray-700 block mb-2">
-              4.5/5
-            </span>
-            {renderStars(4.75)} {/* 95% of 5 stars is 4.75 */}
-          </div>
-        </div>
-
-        {/* JavaScript Skill Card */}
-        <div className="shadow-md rounded-lg p-6 bg-white transition-all ease-in-out duration-300">
-          <div className="flex flex-col h-full">
-            <h3 className="text-2xl font-semibold mb-2 text-gray-800">
-              JavaScript
-            </h3>
-            <p className="text-gray-600 mb-4 flex-grow">
-              Neque porro quisquam est qui dolorem ipsum quia dolor.
-            </p>
-            <span className="text-right text-lg font-medium text-gray-700 block mb-2">
-              4/5
-            </span>
-            {renderStars(4.0)} {/* 4 of 5 stars is 4.0 */}
-          </div>
-        </div>
-
-        {/* Photoshop Skill Card */}
-        <div className="shadow-md rounded-lg p-6 bg-white transition-all ease-in-out duration-300">
-          <div className="flex flex-col h-full">
-            <h3 className="text-2xl font-semibold mb-2 text-gray-800">SQL</h3>
-            <p className="text-gray-600 mb-4 flex-grow">
-              Quis autem vel eum iure reprehenderit qui in ea voluptate.
-            </p>
-            <span className="text-right text-lg font-medium text-gray-700 block mb-2">
-              4/5
-            </span>
-            {renderStars(4)} {/* 55% of 5 stars is 2.75 */}
-          </div>
-        </div>
+    <div className="skills-container mx-auto  p-10 transition-all ease-in-out duration-500 ">
+      <div className="w-full mx-auto">
+        <Slider {...settings}>
+          {skillsData.map((skill, index) => (
+            <div key={index} className="px-3">
+              <div className="skill-box shadow-md rounded-lg px-6 py-10 transition-all ease-in-out duration-500 ">
+                <div className="flex flex-col h-full">
+                  <h3 className="text-2xl font-semibold mb-2 ">{skill.name}</h3>
+                  <p className=" mb-4 flex-grow">{skill.description}</p>
+                  <div className="grid grid-cols-4">
+                    <div className="col-span-1 order-1">
+                      <span className="text-right text-lg font-medium block mb-2">
+                        {skill.rating}/5
+                      </span>
+                    </div>
+                    <div className="col-span-3 order-0">
+                      {renderStars(skill.rating)}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </Slider>
       </div>
     </div>
   );

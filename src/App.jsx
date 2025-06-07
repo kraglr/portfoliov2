@@ -1,137 +1,92 @@
 import { useState, useEffect, useRef, useContext } from "react";
-import "./App.css"; // Ensure App.css is in the same directory as App.jsx
-// import "./styles.scss"; // Ensure styles.scss is in the same directory as App.jsx and your build setup handles SCSS
+import "./App.css";
 
-// Double-check these import paths and file names (including casing)
 import Navigation from "./components/Header/Navigation";
 import Home from "./components/Body/Home/Home";
 import Footer from "./components/Footer/Footer";
 import About from "./components/Body/About/About";
 import Skills from "./components/Body/Skills/Skills";
-import { DarkModeContext } from "./contexts/darkModeContext.jsx"; // Ensure this path is correct
+import { DarkModeContext } from "./contexts/darkModeContext.jsx";
+import Resume from "./components/Body/Resume/Resume.jsx";
 
 function App() {
-  const [count, setCount] = useState(0); // Keeping user's original state
-  const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
-  // Now, useContext(DarkModeContext) will successfully get the value
-  // because App will be wrapped by DarkModeContextProvider in index.js/main.jsx
   const { darkMode } = useContext(DarkModeContext);
+  const [activeSection, setActiveSection] = useState("home");
 
-  // Create refs for each section you want to scroll to
+  // Refs for all sections
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
   const servicesRef = useRef(null);
   const contactRef = useRef(null);
+  const resumeRef = useRef(null);
 
-  // Function to handle scrolling to a specific section
+  const sectionRefs = {
+    home: homeRef,
+    about: aboutRef,
+    resume: resumeRef,
+    // services: servicesRef,
+    // contact: contactRef,
+  };
+
+  // Scroll to section function
   const scrollToSection = (ref) => {
     if (ref.current) {
-      // Ensure the ref is attached to a DOM element
-      ref.current.scrollIntoView({
-        behavior: "smooth", // Makes the scroll animation smooth
-        block: "start", // Aligns the top of the element with the top of the viewport
-      });
+      ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
+  // Observe all sections and update activeSection accordingly
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 1024px)");
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.5, // 50% visible
+    };
 
-    // Set initial value
-    setIsMobileOrTablet(mediaQuery.matches);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id");
+          setActiveSection(id);
+        }
+      });
+    }, options);
 
-    // Listener for resize
-    function handleResize(e) {
-      setIsMobileOrTablet(e.matches);
-    }
+    Object.entries(sectionRefs).forEach(([key, ref]) => {
+      if (ref.current) {
+        ref.current.setAttribute("id", key);
+        observer.observe(ref.current);
+      }
+    });
 
-    mediaQuery.addEventListener("change", handleResize);
-
-    // Cleanup listener on unmount
-    return () => mediaQuery.removeEventListener("change", handleResize);
+    return () => observer.disconnect();
   }, []);
 
   return (
-    // The DarkModeContextProvider is removed from here.
-    // It should wrap the <App /> component in your application's entry file (e.g., index.js or main.jsx).
     <div className={`theme-${darkMode ? "dark" : "light"} font-sans`}>
-      {/* Pass scrollToSection function and an object of refs to Navigation */}
-      <nav className="sticky top-0 z-50">
+      <header className="fixed top-0 right-0 lg:top-30 lg:left-10 lg:right-auto z-50 px-3 py-2">
         <Navigation
           scrollToSection={scrollToSection}
-          sectionRefs={{ homeRef, aboutRef, servicesRef, contactRef }}
+          sectionRefs={sectionRefs}
+          activeSection={activeSection} // Active section for nav highlight
         />
-      </nav>
+      </header>
 
-      {/* Main Content Sections */}
       <main className="w-full">
-        {/* Add padding-top to account for fixed navbar */}
-        {/* Home Section - uses the user's provided Home component structure */}
-        <section ref={homeRef} className="w-[100%]">
+        <section id="home" ref={homeRef} className="w-[100%]">
           <Home />
         </section>
-        <section
-          ref={aboutRef}
-          id="about-me"
-          className="text-gray-800 flex flex-col shadow-lg "
-        >
+
+        <section id="about" ref={aboutRef} className="w-[100%]">
           <About />
         </section>
-        <section
-          id="skills"
-          className="skills section min-h-screen flex flex-col p-8 my-8 shadow-lg "
-        >
-          <Skills />
+
+        <section id="resume" ref={resumeRef}>
+          <Resume />
         </section>
-        {/* About Section - Placeholder, integrate your actual About component here and pass ref */}
-        <section
-          id="about"
-          className="min-h-screen bg-white text-gray-800 flex flex-col items-center justify-center p-8 my-8 shadow-lg rounded-xl"
-        >
-          <div className="container mx-auto text-center py-16">
-            <h2 className="text-4xl font-bold mb-6 text-blue-700">About Us</h2>
-            <p className="text-lg leading-relaxed max-w-2xl mx-auto">
-              We are a passionate team dedicated to crafting exceptional digital
-              experiences. With years of expertise, we transform innovative
-              ideas into robust, user-friendly solutions that drive success. Our
-              commitment to quality and client satisfaction sets us apart.
-            </p>
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h3 className="text-2xl font-semibold mb-3 text-blue-600">
-                  Our Mission
-                </h3>
-                <p className="text-gray-700">
-                  To empower businesses and individuals with cutting-edge
-                  technology and intuitive design, fostering growth and
-                  connection.
-                </p>
-              </div>
-              <div className="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h3 className="text-2xl font-semibold mb-3 text-blue-600">
-                  Our Vision
-                </h3>
-                <p className="text-gray-700">
-                  To be a leader in digital innovation, creating solutions that
-                  not only meet but exceed expectations, making a lasting
-                  positive impact.
-                </p>
-              </div>
-              <div className="p-6 bg-gray-50 rounded-lg shadow-md">
-                <h3 className="text-2xl font-semibold mb-3 text-blue-600">
-                  Our Values
-                </h3>
-                <p className="text-gray-700">
-                  Integrity, Creativity, Collaboration, Excellence, and
-                  User-Centricity guide everything we do.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* Services Section - Placeholder, integrate your actual Services component here and pass ref */}
-        <section
-          ref={servicesRef} // Attach the ref to this section
+
+        {/* <section
+          ref={servicesRef}
           id="services"
           className="min-h-screen bg-blue-500 text-white flex flex-col items-center justify-center p-8 my-8 shadow-lg rounded-xl"
         >
@@ -183,9 +138,10 @@ function App() {
               </div>
             </div>
           </div>
-        </section>
-        <section
-          ref={contactRef} // Attach the ref to this section
+        </section> */}
+
+        {/* <section
+          ref={contactRef}
           id="contact"
           className="min-h-screen bg-white text-gray-800 flex items-center justify-center p-8 mt-8 rounded-t-xl shadow-lg"
         >
@@ -227,11 +183,10 @@ function App() {
               </button>
             </form>
           </div>
-        </section>
+        </section> */}
       </main>
 
-      {/* Footer */}
-      <footer className="bg-white p-6 text-center mt-12 rounded-t-xl">
+      <footer className="">
         <Footer />
       </footer>
     </div>

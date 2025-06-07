@@ -3,9 +3,13 @@ import "./home.scss";
 
 const Home = React.forwardRef((props, ref) => {
   return (
-    <div ref={ref} id="home" className="container p-7">
+    <div
+      ref={ref}
+      id="home"
+      className="container align-middle justify-center items-center"
+    >
       {/* Added ref, id, and some layout classes for better integration */}
-      <div className="grid grid-cols-2 w-[75%] mx-auto mt-10">
+      <div className="grid xl:grid-cols-2 lg:grid-cols-2 grid-cols-1 w-[75%] mx-auto h-full my-auto  p-5">
         <div className=" col-span-1">
           <div className="" data-aos="fade-up" data-aos-delay="200">
             <h2 className="text-3xl font-bold mb-4">
@@ -22,13 +26,13 @@ const Home = React.forwardRef((props, ref) => {
             >
               <a
                 href="#portfolio"
-                className="bg-[#3c85c9] hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out"
+                className="bg-[#3c85c9] hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg "
               >
                 View My Work
               </a>
               <a
                 href="#contact"
-                className="border border-[#3c85c9] text-[#3c85c9] hover:bg-blue-50 hover:text-blue-700 font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out"
+                className="border border-[#3c85c9] text-[#3c85c9] hover:bg-blue-50 hover:text-blue-700 font-bold py-3 px-6 rounded-lg "
               >
                 Let's Connect
               </a>

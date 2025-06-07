@@ -1,18 +1,134 @@
 @import "../../styles.scss";
-header {
+
+.nav-container {
   @include themify($themes) {
-    background-color: themed("bgSoft");
+    width: 200px;
+
     div {
-      background-color: themed("bg");
       color: themed("textColor");
-      svg {
+
+      span.theme {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        // background-color: themed("bg");
         cursor: pointer;
+        width: 56px;
+        height: 56px;
+        margin: 0.3rem 0;
+        transition: all 0.3s ease;
+
+        &:hover {
+          width: 120px;
+          border-radius: 28px;
+        }
+
+        svg {
+          cursor: pointer;
+        }
       }
+
+      .menu-icon {
+        display: none;
+
+        @include tablet {
+          display: block;
+        }
+        @include mobile {
+          display: block;
+        }
+      }
+
       nav {
         ul {
+          padding: 0.3rem;
+
           li {
-            span {
-              cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background-color: themed("bgNav");
+            cursor: pointer;
+            width: 56px;
+            height: 56px;
+            margin: 0.3rem 0;
+            transition: all 0.3s ease;
+
+            .span-group {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              height: 100%;
+              gap: 0.5rem;
+
+              .nav-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                svg {
+                  font-size: 20px;
+                }
+              }
+
+              .nav-label {
+                display: none;
+              }
+            }
+          }
+
+          // Large screens: hide 2nd <li>
+          li:nth-child(2) {
+            display: flex; // default visible
+            @include tablet {
+              display: block; // visible on tablet/mobile
+            }
+            @include mobile {
+              display: block;
+            }
+          }
+          @media (min-width: 1023px) {
+            li:nth-child(2) {
+              display: none; // hide 2nd item on large screens
+            }
+          }
+          li:nth-child(n + 3) {
+            &:hover {
+              width: 120px;
+              border-radius: 28px;
+
+              .span-group .nav-label {
+                display: inline;
+              }
+            }
+          }
+
+          // Tablet and mobile: hide from 3rd item onward by default
+          @include tablet {
+            li:nth-child(n + 3) {
+              display: none;
+            }
+          }
+          @include mobile {
+            li:nth-child(n + 3) {
+              display: none;
+            }
+          }
+
+          // When menu is open, show all items on tablet/mobile
+          &.menu-open {
+            @include tablet {
+              li {
+                display: flex !important;
+              }
+            }
+            @include mobile {
+              li {
+                display: flex !important;
+              }
             }
           }
         }
