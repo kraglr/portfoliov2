@@ -1,0 +1,22 @@
+@import "../../styles.scss";
+header {
+  @include themify($themes) {
+    background-color: themed("bgSoft");
+    div {
+      background-color: themed("bg");
+      color: themed("textColor");
+      svg {
+        cursor: pointer;
+      }
+      nav {
+        ul {
+          li {
+            span {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}

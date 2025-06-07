@@ -1,0 +1,71 @@
+@import "../../../styles.scss";
+.font-harmonious-vibes {
+  font-family: "Parisienne", cursive;
+}
+.font-jumbled {
+  font-family: "Jumbled", sans-serif; /* Use 'Jumbled' as the primary font */
+  /* Add a fallback generic font like 'sans-serif' */
+}
+
+.about-container {
+  @include themify($themes) {
+    background-color: themed("bgSofter");
+    div {
+      .container-header {
+        h1 {
+          color: themed("textColorSoft");
+        }
+        div {
+          svg {
+            path {
+              stroke: themed("textColorSoft");
+            }
+          }
+        }
+      }
+      .about-container-body {
+        position: relative;
+        color: themed("textColorSoft");
+        // max-height: 500px;
+        div {
+          .about-img {
+            img {
+              border-radius: 25px;
+              object-fit: cover;
+              max-height: 500px;
+              width: 450px;
+            }
+          }
+          .about-content {
+            .about-header {
+              span,
+              h2 {
+                font-size: large;
+                font-weight: bolder;
+              }
+              h2 {
+                font-size: xx-large;
+              }
+            }
+            .personal-info {
+              border-radius: 12.5px;
+              background-color: themed("bgSoft");
+              div {
+                div {
+                  .info-item {
+                    label {
+                    }
+                    .value {
+                      font-weight: bolder;
+                      font-size: larger;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
