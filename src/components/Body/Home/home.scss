@@ -1,12 +1,41 @@
 @import "../../../styles.scss";
+
 #home {
-  min-width: 100%;
+  min-width: 100vw;
   min-height: 100vh;
-  height: 100vh;
+  // height: 100vh;
+  // Use flexbox to center the content div within the home section
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // Ensure the #home container itself is not blurred, only the .bg-image within it
+  overflow: hidden; // Hide any overflow from the blur or content
+
   @include themify($themes) {
     background-color: themed("bgSoft");
     color: themed("textColor");
+
+    .bg-image {
+      // Apply the background image and blur here to the absolute positioned div
+      background-image: url("../../../assets/img/generatedimg.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      // width: 100%;
+      filter: blur(8px); // Apply blur only to the background image div
+      -webkit-filter: blur(8px); // For Safari compatibility
+    }
+
+    .bg-text {
+      // Ensure the text container has a transparent background
+      background: transparent;
+      // You might want to add some padding or margin if the text is too close to the edges
+    }
+
     div {
+      // This general rule applies to all divs within #home in themed contexts
+      // The `align-items: center` here is less critical now that #home uses flexbox
+      // to center its direct child (bg-text), but keeping it for other inner divs' alignment.
       align-items: center;
     }
   }

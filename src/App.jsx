@@ -9,6 +9,7 @@ import Skills from "./components/Body/Skills/Skills";
 import { DarkModeContext } from "./contexts/darkModeContext.jsx";
 import Resume from "./components/Body/Resume/Resume.jsx";
 import Contact from "./components/Body/Contact/Contact.jsx";
+import Portfolio from "./components/Body/Portfolio/Portfolio.jsx";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -20,11 +21,13 @@ function App() {
   const servicesRef = useRef(null);
   const contactRef = useRef(null);
   const resumeRef = useRef(null);
+  const portRef = useRef(null);
 
   const sectionRefs = {
     home: homeRef,
     about: aboutRef,
     resume: resumeRef,
+    portfolio: portRef,
     // services: servicesRef,
     contact: contactRef,
   };
@@ -75,7 +78,7 @@ function App() {
 
       <main className="w-full">
         <section id="home" ref={homeRef} className="w-[100%]">
-          <Home />
+          <Home scrollToSection={scrollToSection} />
         </section>
 
         <section id="about" ref={aboutRef} className="w-[100%]">
@@ -84,6 +87,9 @@ function App() {
 
         <section id="resume" ref={resumeRef}>
           <Resume />
+        </section>
+        <section id="portfolio" ref={portRef} className="w-[100%]">
+          <Portfolio />
         </section>
 
         {/* <section

@@ -2,7 +2,7 @@
 
 .contact-container {
   @include themify($themes) {
-    background-color: themed("bgSoft");
+    background-color: themed("bgSofter");
     color: themed("textColorSoft");
 
     .contact-header {

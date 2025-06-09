@@ -1,0 +1,71 @@
+@import "../../../styles.scss";
+.portfolio-container {
+  @include themify($themes) {
+    background-color: themed("bgSoft");
+    color: themed("textColorSoft");
+
+    .portfolio-header {
+      h2 {
+        font-size: xx-large;
+        font-weight: bolder;
+      }
+
+      div {
+        svg.curved-line {
+          @include mobile {
+            display: none;
+          }
+          path {
+            stroke: themed("textColorSoft");
+          }
+        }
+      }
+    }
+
+    .portfolio-body {
+      .images-div {
+        .img-box {
+          padding: 0.2rem 0.3rem;
+
+          .img-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1; // Makes square containers
+            overflow: hidden;
+            border-radius: 0.5rem;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              transition: transform 0.3s ease;
+            }
+
+            .description {
+              position: absolute;
+              inset: 0;
+              background-color: rgba(0, 0, 0, 0.6);
+              color: white;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              opacity: 0;
+              transition: opacity 0.3s ease;
+              padding: 0.5rem;
+              text-align: center;
+              font-size: 0.875rem;
+            }
+
+            &:hover img {
+              transform: scale(1.05);
+            }
+
+            &:hover .description {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
