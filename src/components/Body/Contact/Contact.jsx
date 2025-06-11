@@ -2,6 +2,10 @@ import React from "react";
 import "./contact.scss";
 import CallIcon from "@mui/icons-material/Call";
 import EmailIcon from "@mui/icons-material/Email";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 const Contact = () => {
   return (
@@ -50,6 +54,25 @@ const Contact = () => {
                 </h3>
                 <span>aguilarkier25@gmail.com</span>
               </div>
+            </div>
+            <div className="col-span-1  mx-auto py-10 justify-center align-middle">
+              <div class="social-links flex justify-center">
+                <a href="https://www.linkedin.com/in/aguilar-kier-luna">
+                  <LinkedInIcon />
+                </a>
+                <a href="https://www.facebook.com/aguilarkier">
+                  <FacebookIcon />
+                </a>
+                <a href="https://www.instagram.com/kraglr25/">
+                  <InstagramIcon />
+                </a>
+                <a href="https://github.com/kraglr">
+                  <GitHubIcon />
+                </a>
+              </div>
+              {/* <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div> */}
             </div>
           </div>
           <div className="col-span-1 contact-form">

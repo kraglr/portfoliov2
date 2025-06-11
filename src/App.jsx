@@ -10,6 +10,7 @@ import { DarkModeContext } from "./contexts/darkModeContext.jsx";
 import Resume from "./components/Body/Resume/Resume.jsx";
 import Contact from "./components/Body/Contact/Contact.jsx";
 import Portfolio from "./components/Body/Portfolio/Portfolio.jsx";
+import { motion } from "framer-motion";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -78,18 +79,58 @@ function App() {
 
       <main className="w-full">
         <section id="home" ref={homeRef} className="w-[100%]">
-          <Home scrollToSection={scrollToSection} />
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <Home scrollToSection={scrollToSection} />
+          </motion.div>
         </section>
 
         <section id="about" ref={aboutRef} className="w-[100%]">
-          <About />
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <About />
+          </motion.div>
         </section>
 
         <section id="resume" ref={resumeRef}>
-          <Resume />
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <Resume />
+          </motion.div>
         </section>
+
         <section id="portfolio" ref={portRef} className="w-[100%]">
-          <Portfolio />
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <Portfolio />
+          </motion.div>
+        </section>
+
+        <section id="contact" ref={contactRef}>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <Contact />
+          </motion.div>
         </section>
 
         {/* <section
@@ -146,15 +187,11 @@ function App() {
             </div>
           </div>
         </section> */}
-
-        <section ref={contactRef} id="contact" className="">
-          <Contact />
-        </section>
       </main>
 
-      <footer className="">
+      {/* <footer className="">
         <Footer />
-      </footer>
+      </footer> */}
     </div>
   );
 }

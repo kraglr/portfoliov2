@@ -1,6 +1,7 @@
 import React from "react";
 import "./resume.scss";
 import Skills from "../Skills/Skills";
+import { motion } from "framer-motion";
 
 // Reusable ResumeItem component
 const ResumeItem = ({
@@ -20,14 +21,12 @@ const ResumeItem = ({
           className={type === "education" ? "md:col-span-3" : "md:col-span-4"}
         >
           <h4 className="text-xl font-bold mb-1">{title}</h4>
-          {
-            <h5 className="text-lg font-semibold mb-1">
-              {period} <span className="italic">({institution})</span>
-            </h5>
-          }
+          <h5 className="text-lg font-semibold mb-1">
+            {period} <span className="italic">({institution})</span>
+          </h5>
           {description && <p className="mb-3">{description}</p>}
           {duties && duties.length > 0 && (
-            <ul className="list-disc pl-5 space-y-1">
+            <ul className="list-disc pl-5 space-y-1 text-base">
               {duties.map((duty, i) => (
                 <li key={i}>{duty}</li>
               ))}
@@ -39,40 +38,76 @@ const ResumeItem = ({
   );
 };
 
-// Use forwardRef to expose the ref
 const Resume = () => {
   return (
-    <div className="resume-container px-10 transition-all ease-in-out duration-500 pt-25 pb-10">
-      <div className="w-[90%] lg:w-[75%] xl:w-[75%] mx-auto mb-12">
-        <h2 className="text-4xl font-bold text-center font-jumbled">Resume</h2>
-        <div className="text-center mx-auto justify-center items-center">
-          <svg
-            className="mx-auto text-center w-[300px] curved-line"
-            viewBox="0 0 300 20"
-            xmlns="http://www.w3.org/2000/svg"
+    <div className="resume-container px-6 sm:px-10 transition-all ease-in-out duration-500 pt-20 pb-12">
+      <div className="w-[90%] lg:w-[75%] xl:w-[75%] mx-auto">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl font-bold text-center font-jumbled">
+            Resume
+          </h2>
+          <div className="text-center mx-auto justify-center items-center">
+            <svg
+              className="mx-auto text-center w-[300px] curved-line"
+              viewBox="0 0 300 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 0,10 C 60,0 90,20 150,10 C 210,0 240,20 300,10"
+                fill="none"
+                strokeWidth="2"
+              ></path>
+            </svg>
+          </div>
+
+          {/* Intro Paragraph */}
+          <p className="text-center text-lg mt-6 mb-6 max-w-4xl mx-auto">
+            Passionate full-stack developer with a strong foundation in ERP and
+            healthcare systems. Proven ability to lead projects, design scalable
+            architectures, and build efficient web solutions that solve
+            real-world problems.
+          </p>
+
+          {/* Resume Button */}
+          <div className="text-center mb-12">
+            <a
+              href="/files/RESUME_KLA.pdf"
+              download
+              className="inline-block bg-[#3c85c9] hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg"
+            >
+              Download Resume
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Skills */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-3xl font-semibold mb-6 border-b-2 border-yellow-500 pb-2 inline-block">
+            Technical Skills
+          </h3>
+          <Skills />
+        </motion.div>
+
+        {/* Education & Experience */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-16 mt-16">
+          {/* Education */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
           >
-            <path
-              d="M 0,10 C 60,0 90,20 150,10 C 210,0 240,20 300,10"
-              fill="none"
-              strokeWidth="2"
-            ></path>
-          </svg>
-        </div>
-        <p className="text-center text-lg mb-12 max-w-4xl mx-auto">
-          I am a dedicated and results-oriented professional with a passion for
-          continuous learning and problem-solving. My resume showcases my
-          experience and growth in the tech industry, highlighting my commitment
-          to developing innovative solutions and leading successful projects.
-        </p>
-
-        <h3 className="text-3xl font-semibold mb-6 border-b-2 border-yellow-500 pb-2 inline-block">
-          Technical Skills
-        </h3>
-        <Skills />
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-16 my-10">
-          {/* Left: Education */}
-          <div>
             <h3 className="text-3xl font-semibold mb-6 border-b-2 border-yellow-500 pb-2 inline-block">
               Education
             </h3>
@@ -83,10 +118,15 @@ const Resume = () => {
               institution="Southern Luzon State University"
               description="Completed a comprehensive curriculum covering software development, hardware design, and network systems."
             />
-          </div>
+          </motion.div>
 
-          {/* Right: Experience */}
-          <div>
+          {/* Experience */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
             <h3 className="text-3xl font-semibold mb-6 border-b-2 border-yellow-500 pb-2 inline-block">
               Professional Experience
             </h3>
@@ -95,16 +135,13 @@ const Resume = () => {
               title="SR. Developer & Supervisor"
               period="2025 - Present"
               institution="One Document Corporation"
-              description="Led and managed a team of developers, overseeing the full software development lifecycle from design to deployment. Responsible for technical guidance, project coordination, and ensuring high-quality deliverables."
-              duties={
-                [
-                  // "Oversaw and guided development teams in building and optimizing web applications based on client or company needs, specializing in Healthcare Information Systems.",
-                  // "Assisted in managing and optimizing database schemas (MySQL) and complex queries for enhanced system performance and scalability.",
-                  // "Architected and integrated robust RESTful and SOAP APIs, ensuring seamless connectivity with third-party services.",
-                  // "Provided technical leadership, code reviews, and mentorship to junior developers, facilitating skill development and adherence to best practices.",
-                  // "Drove technical decision-making and problem-solving for complex development challenges.",
-                ]
-              }
+              description="Led development teams for ERP and EHR systems, managing both technical architecture and developer growth."
+              duties={[
+                "Architected modular systems for ERP and EHR platforms using Laravel and React.",
+                "Oversaw API integration and database optimization to support growing datasets and users.",
+                "Conducted code reviews, mentoring junior developers and enforcing clean code standards.",
+                "Collaborated with stakeholders to define project scope and timelines, ensuring timely delivery.",
+              ]}
             />
             <ResumeItem
               type="experience"
@@ -112,11 +149,10 @@ const Resume = () => {
               period="2022 - 2024"
               institution="One Document Corporation"
               duties={[
-                "Developed and maintained responsive web applications using HTML, CSS, and JavaScript, with a focus on Healthcare Information Systems.",
-                "Implemented features and optimized existing web applications according to project requirements and design specifications.",
-                "Assisted in managing and optimizing database queries (MySQL) for application functionality.",
-                "Integrated and consumed RESTful and SOAP APIs for various application functionalities.",
-                "Collaborated with senior developers on technical solutions and participated in code reviews.",
+                "Developed and maintained responsive web apps focused on healthcare workflows.",
+                "Optimized SQL queries and implemented REST/SOAP API integrations.",
+                "Built reusable React components and participated in UI/UX reviews.",
+                "Collaborated with senior developers during planning, development, and code reviews.",
               ]}
             />
             <ResumeItem
@@ -125,8 +161,8 @@ const Resume = () => {
               period="2021 - 2022"
               institution="That's Great News"
               duties={[
-                "Delivers the required number of leads on a daily, weekly, and monthly basis.",
-                "Manages assigned publication, ensuring all issues are updated.",
+                "Generated leads from published content and managed publication tracking.",
+                "Maintained high accuracy under daily quota pressure across multiple data channels.",
               ]}
             />
             <ResumeItem
@@ -135,12 +171,11 @@ const Resume = () => {
               period="2018"
               institution="RJ Globus Solutions"
               duties={[
-                "Assist employees with troubleshooting hardware and software issues.",
-                "Provide remote or on-site technical support via phone, email, or chat.",
-                "Guide users on basic troubleshooting steps and IT best practices.",
+                "Provided first-level support for desktop, network, and printing issues.",
+                "Guided employees on basic troubleshooting and helped resolve service tickets.",
               ]}
             />
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
