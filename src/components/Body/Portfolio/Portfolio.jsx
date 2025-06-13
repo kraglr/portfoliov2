@@ -11,6 +11,8 @@ import maloi from "../../../assets/img/arts/maloi.jpg";
 import mina from "../../../assets/img/arts/mina.jpg";
 import sana from "../../../assets/img/arts/sana.jpg";
 import designproject from "../../../assets/img/projects/DesignProject.png";
+import chessapp from "../../../assets/img/projects/chessapp.png";
+import tetrisapp from "../../../assets/img/projects/tetris.png";
 
 import "./portfolio.scss";
 
@@ -24,6 +26,20 @@ const Portfolio = () => {
       category: "Projects",
       description:
         "A Web-based Filling of Documents for Sampaloc, Quezon Municipality. A.Y.2017-2018",
+    },
+    {
+      src: chessapp,
+      label: "Chess App",
+      category: "Projects",
+      description:
+        "A Chess App developed using React + vite, with the use of TailwindCss",
+    },
+    {
+      src: tetrisapp,
+      label: "Web Tetris",
+      category: "Projects",
+      description:
+        "A Tetris App developed using React + vite, with the use of TailwindCss",
     },
     { src: jennie, label: "Blackpink Jennie Vexel Art", category: "Arts" },
     { src: aiah, label: "Bini Aiah Portrait", category: "Arts" },

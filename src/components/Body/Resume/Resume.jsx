@@ -75,15 +75,15 @@ const Resume = () => {
           </p>
 
           {/* Resume Button */}
-          <div className="text-center mb-12">
+          {/* <div className="text-center mb-12">
             <a
-              href="/files/RESUME_KLA.pdf"
+              href="https://github.com/kraglr/portfoliov2/blob/942400989aafa2e93afba1b4e58487833a89bacb/public/files/RESUME_KLA.pdf"
               download
               className="inline-block bg-[#3c85c9] hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg"
             >
               Download Resume
             </a>
-          </div>
+          </div> */}
         </motion.div>
 
         {/* Skills */}
