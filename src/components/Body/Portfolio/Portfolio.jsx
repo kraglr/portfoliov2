@@ -13,6 +13,7 @@ import sana from "../../../assets/img/arts/sana.jpg";
 import designproject from "../../../assets/img/projects/DesignProject.png";
 import chessapp from "../../../assets/img/projects/chessapp.png";
 import tetrisapp from "../../../assets/img/projects/tetris.png";
+import ERP from "../../../assets/img/projects/ERP.png";
 
 import "./portfolio.scss";
 
@@ -21,41 +22,110 @@ const Portfolio = () => {
 
   const portfolioItems = [
     {
-      src: designproject,
-      label: "Web-based Filling of Leave Application",
+      src: ERP,
+      label: "Custom ERP System for Inventory and Finance",
       category: "Projects",
       description:
-        "A Web-based Filling of Documents for Sampaloc, Quezon Municipality. A.Y.2017-2018",
+        "A comprehensive web-based ERP system developed using React, Node.js, and MySQL. Features include Purchase Requests (PR), Purchase Orders (PO), Goods Receipt (GR), Goods Return (GR), Accounts Payable (AP), Accounts Receivable (AR), and Journal Entries (JE) with integrated stockcard tracking and costing methods.",
+    },
+    {
+      src: designproject,
+      label: "Leave Application Management System A.Y.: 2017-2018",
+      category: "Projects",
+      description:
+        "A web-based document filing system developed using native PHP, HTML, CSS, and JavaScript. Built for Sampaloc, Quezon Municipality during A.Y. 2017–2018, this system streamlines the leave application process for municipal employees with a simple and efficient UI.",
     },
     {
       src: chessapp,
-      label: "Chess App",
+      label: "Interactive Chess Application",
       category: "Projects",
       description:
-        "A Chess App developed using React + vite, with the use of TailwindCss",
+        "A browser-based chess app built with React and Vite, styled with Tailwind CSS. Provides real-time gameplay with intuitive UI and responsive design for desktop and mobile users.",
     },
     {
       src: tetrisapp,
-      label: "Web Tetris",
+      label: "Classic Web Tetris Game",
       category: "Projects",
       description:
-        "A Tetris App developed using React + vite, with the use of TailwindCss",
+        "A Tetris game clone developed using React and Vite, styled with Tailwind CSS. Features smooth animations, responsive controls, and retro-inspired visuals for a nostalgic experience.",
     },
-    { src: jennie, label: "Blackpink Jennie Vexel Art", category: "Arts" },
-    { src: aiah, label: "Bini Aiah Portrait", category: "Arts" },
-    { src: aiah_vector, label: "Bini Aiah Vexel Art", category: "Arts" },
-    { src: colet, label: "Bini Colet Portrait", category: "Arts" },
-    { src: colet_vector, label: "Bini Colet Vexel Art", category: "Arts" },
+    {
+      src: jennie,
+      label: "Jennie (BLACKPINK) Vexel Art",
+      category: "Arts",
+      description:
+        "A digital vexel art portrait of Jennie from BLACKPINK, highlighting vector-style rendering and layered shading techniques.",
+    },
+    {
+      src: aiah,
+      label: "Aiah (BINI) Portrait",
+      category: "Arts",
+      description:
+        "A traditional portrait of Aiah from BINI, hand-drawn using graphite and charcoal pencils to create realistic texture and depth.",
+    },
+    {
+      src: aiah_vector,
+      label: "Aiah (BINI) Vexel Art",
+      category: "Arts",
+      description:
+        "Vector-style vexel artwork of Aiah from BINI, focusing on detailed facial structure and vibrant color composition.",
+    },
+    {
+      src: colet,
+      label: "Colet (BINI) Portrait",
+      category: "Arts",
+      description:
+        "Traditional pencil portrait of Colet from BINI, rendered using graphite and charcoal with emphasis on soft shadows and contrast.",
+    },
+    {
+      src: colet_vector,
+      label: "Colet (BINI) Vexel Art",
+      category: "Arts",
+      description:
+        "A detailed vexel art of Colet from BINI, emphasizing vector-style precision and layered depth.",
+    },
     {
       src: jennie_portrait,
-      label: "Blackpink Jennie Portrait",
+      label: "Jennie (BLACKPINK) Portrait",
       category: "Arts",
+      description:
+        "Hand-drawn graphite and charcoal portrait of Jennie from BLACKPINK, capturing lifelike features and subtle shading.",
     },
-    { src: Jhoanna, label: "Bini Jhoanna Portrait", category: "Arts" },
-    { src: karina, label: "Aespa Karina Portrait", category: "Arts" },
-    { src: maloi, label: "Bini Maloi Portrait", category: "Arts" },
-    { src: mina, label: "Twice Mina Vexel Art", category: "Arts" },
-    { src: sana, label: "Twice Sana Portrait", category: "Arts" },
+    {
+      src: Jhoanna,
+      label: "Jhoanna (BINI) Portrait",
+      category: "Arts",
+      description:
+        "A graphite and charcoal pencil portrait of Jhoanna from BINI, showcasing expressive eyes and delicate details.",
+    },
+    {
+      src: karina,
+      label: "Karina (aespa) Portrait",
+      category: "Arts",
+      description:
+        "Realistic pencil portrait of Karina from aespa, drawn with graphite and charcoal to emphasize strong features and lighting.",
+    },
+    {
+      src: maloi,
+      label: "Maloi (BINI) Portrait",
+      category: "Arts",
+      description:
+        "Traditional graphite and charcoal drawing of Maloi from BINI, highlighting refined textures and soft gradients.",
+    },
+    {
+      src: mina,
+      label: "Mina (TWICE) Vexel Art",
+      category: "Arts",
+      description:
+        "A vector-style vexel artwork of Mina from TWICE, emphasizing clean lines, color blending, and stylized realism.",
+    },
+    {
+      src: sana,
+      label: "Sana (TWICE) Portrait",
+      category: "Arts",
+      description:
+        "A traditional portrait of Sana from TWICE, hand-rendered using graphite and charcoal pencils for smooth gradients and fine detail.",
+    },
   ];
 
   const categories = ["All", "Projects", "Arts"];
@@ -111,7 +181,9 @@ const Portfolio = () => {
                 <div className="img-container">
                   <img src={item.src} alt={item.label} />
                   {item.description && (
-                    <div className="description">{item.description}</div>
+                    <div className="description cursor-pointer">
+                      {item.description}
+                    </div>
                   )}
                 </div>
                 <span className="block mt-2 text-center">{item.label}</span>
