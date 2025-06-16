@@ -14,9 +14,9 @@ import designproject from "../../../assets/img/projects/DesignProject.png";
 import chessapp from "../../../assets/img/projects/chessapp.png";
 import tetrisapp from "../../../assets/img/projects/tetris.png";
 import ERP from "../../../assets/img/projects/ERP.png";
-
+import krweather from "../../../assets/img/projects/krweather.png";
 import "./portfolio.scss";
-
+import LaunchIcon from "@mui/icons-material/Launch";
 const Portfolio = () => {
   const [projType, setProjType] = useState("All");
 
@@ -34,6 +34,14 @@ const Portfolio = () => {
       category: "Projects",
       description:
         "A web-based document filing system developed using native PHP, HTML, CSS, and JavaScript. Built for Sampaloc, Quezon Municipality during A.Y. 2017–2018, this system streamlines the leave application process for municipal employees with a simple and efficient UI.",
+    },
+    {
+      src: krweather,
+      label: "KR Weather - Real-Time Forecast App",
+      category: "Projects",
+      description:
+        "A sleek and responsive weather application built with React, Vite, and Tailwind CSS. It uses the OpenWeatherMap API to provide real-time weather data including temperature, humidity, wind speed, and condition icons. Designed for both desktop and mobile users with a modern, glossy UI.",
+      site: "https://kraglrweather.netlify.app/",
     },
     {
       src: chessapp,
@@ -181,8 +189,21 @@ const Portfolio = () => {
                 <div className="img-container">
                   <img src={item.src} alt={item.label} />
                   {item.description && (
-                    <div className="description cursor-pointer">
-                      {item.description}
+                    <div className="description cursor-pointer flex flex-col">
+                      <span className="text-xs text-justify">
+                        {item.description}
+                      </span>
+                      {item.site && (
+                        <a
+                          href={item.site}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-1  hover:underline inline-flex items-center gap-1 text-xl"
+                        >
+                          Visit Site
+                          <LaunchIcon fontSize="small" />
+                        </a>
+                      )}
                     </div>
                   )}
                 </div>
