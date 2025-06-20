@@ -1,11 +1,16 @@
 import React from "react";
 import "./about.scss";
 import img from "../../../assets/img/viber_image_2025-06-07_12-21-23-240.jpg";
-import { motion } from "framer-motion";
 
 const About = () => {
   return (
-    <div className="about-container mx-auto w-full pt-16">
+    <div
+      className="about-container mx-auto w-full pt-16 "
+      // data-aos="slide-up"
+      // data-aos-duration="800"
+      // data-aos-easing="ease-in-out"
+      // data-aos-delay="300"
+    >
       <div className="w-[90%] lg:w-[75%] xl:w-[75%] mx-auto py-10">
         {/* Header */}
         <div className="container-header w-full text-center justify-center py-5">
@@ -33,27 +38,26 @@ const About = () => {
         <div className="container-body my-3 about-container-body">
           <div className="grid xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 grid-cols-1 gap-3">
             {/* Image with animation */}
-            <motion.div
-              className="about-img col-span-1 lg:p-16 md:p-10 p-2 items-center my-auto justify-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
+            <div
+              data-aos="fade-right"
+              data-aos-duration="1000"
+              data-aos-easing="ease-in-out"
+              data-aos-delay="300"
+              className="w-80 mx-auto"
             >
               <img
                 src={img}
                 alt="Portrait of Kier Luna Aguilar"
                 className="mx-auto my-auto"
               />
-            </motion.div>
+            </div>
 
             {/* Text with animation */}
-            <motion.div
-              className="about-content col-span-1 py-7 px-3"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
+            <div
+              data-aos="fade-left"
+              data-aos-duration="1000"
+              data-aos-easing="ease-in-out"
+              data-aos-delay="300"
             >
               <div className="about-header my-3 px-3 py-2">
                 <h2 className="font-jumbled text-center my-3 text-2xl">
@@ -92,7 +96,7 @@ const About = () => {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

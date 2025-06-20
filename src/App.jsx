@@ -11,8 +11,10 @@ import Resume from "./components/Body/Resume/Resume.jsx";
 import Contact from "./components/Body/Contact/Contact.jsx";
 import Portfolio from "./components/Body/Portfolio/Portfolio.jsx";
 import { motion } from "framer-motion";
-
+import AOS from "aos";
+import "aos/dist/aos.css"; // You can also use <link> for styles
 function App() {
+  AOS.init();
   const { darkMode } = useContext(DarkModeContext);
   const [activeSection, setActiveSection] = useState("home");
 
