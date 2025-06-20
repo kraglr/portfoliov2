@@ -37,7 +37,7 @@ const AnimatedSection = ({ children, direction = "right", delay = 0 }) => {
 
 const About = () => {
   return (
-    <div className="about-container mx-auto w-full pt-16 relative">
+    <div className="about-container mx-auto w-full pt-16 relative min-h-screen">
       <div className="w-[90%] lg:w-[75%] xl:w-[75%] mx-auto py-10">
         {/* Header */}
         <div className="container-header w-full text-center justify-center py-5">

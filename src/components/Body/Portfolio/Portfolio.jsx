@@ -17,10 +17,15 @@ import ERP from "../../../assets/img/projects/ERP.png";
 import krweather from "../../../assets/img/projects/krweather.png";
 import "./portfolio.scss";
 import LaunchIcon from "@mui/icons-material/Launch";
-
 import AnimatedSection from "../../utilities/AnimatedSection";
+
 const Portfolio = () => {
   const [projType, setProjType] = useState("All");
+  const [loadedImages, setLoadedImages] = useState({});
+
+  const handleImageLoad = (index) => {
+    setLoadedImages((prev) => ({ ...prev, [index]: true }));
+  };
 
   const portfolioItems = [
     {
@@ -188,12 +193,25 @@ const Portfolio = () => {
           <div className="portfolio-body">
             <div className="images-div grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-y-7 gap-x-4">
               {filteredItems.map((item, i) => (
-                <AnimatedSection direction="top">
-                  <div className="img-box col-span-1" key={i}>
-                    <div className="img-container">
-                      <img src={item.src} alt={item.label} />
+                <AnimatedSection direction="top" key={i}>
+                  <div className="img-box col-span-1">
+                    <div className="img-container relative w-full aspect-square overflow-hidden rounded-xl shadow-md">
+                      {!loadedImages[i] && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 z-10">
+                          <div className="w-6 h-6 border-4 border-t-transparent border-gray-600 rounded-full animate-spin"></div>
+                        </div>
+                      )}
+                      <img
+                        src={item.src}
+                        alt={item.label}
+                        loading="lazy"
+                        className={`w-full h-full object-cover transition-opacity duration-500 ${
+                          loadedImages[i] ? "opacity-100" : "opacity-0"
+                        }`}
+                        onLoad={() => handleImageLoad(i)}
+                      />
                       {item.description && (
-                        <div className="description cursor-pointer flex flex-col">
+                        <div className="description cursor-pointer flex flex-col mt-2">
                           <span className="text-xs text-justify">
                             {item.description}
                           </span>
@@ -202,7 +220,7 @@ const Portfolio = () => {
                               href={item.site}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="mt-1  hover:underline inline-flex items-center gap-1 text-xl"
+                              className="mt-1 hover:underline inline-flex items-center gap-1 text-xl"
                             >
                               Visit Site
                               <LaunchIcon fontSize="small" />

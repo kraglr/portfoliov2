@@ -6,25 +6,35 @@ import devAnimation from "../../../assets/lotties/Animation - 1749608750808.json
 import {
   SiLaravel,
   SiReact,
-  SiMysql,
+  SiHtml5,
+  SiCss3,
+  // SiMysql,
   SiNodedotjs,
   SiSass,
   SiBootstrap,
   SiTailwindcss,
   SiPostman,
-  // SiNodedotjs,
+  SiMysql,
+  SiGithub,
+  SiExpress,
+  SiPhp,
 } from "react-icons/si";
 const TechStackIcons = () => {
   return (
     <div className="flex flex-wrap items-center gap-4  text-xl mt-4">
       <SiLaravel title="Laravel" className="hover:text-red-500" />
+      <SiPhp title="Express" className="hover:text-blue-300" />
       <SiReact title="React" className="hover:text-blue-400" />
+      <SiHtml5 title="HTML5" className="hover:text-orange-700" />
+      <SiCss3 title="CSS3" className="hover:text-blue-600" />
       <SiMysql title="MySQL" className="hover:text-[#00758F]" />
       <SiNodedotjs title="Node.js" className="hover:text-green-500" />
       <SiSass title="SCSS" className="hover:text-pink-500" />
       <SiBootstrap title="Bootstrap" className="hover:text-purple-600" />
       <SiTailwindcss title="TailwindCSS" className="hover:text-cyan-500" />
       <SiPostman title="Postman" className="hover:text-orange-500" />
+      <SiGithub title="MySQL" className="hover:text-black" />
+      <SiExpress title="Express" className="hover:text-black" />
     </div>
   );
 };

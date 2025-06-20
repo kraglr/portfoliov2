@@ -41,7 +41,7 @@ const ResumeItem = ({
 
 const Resume = () => {
   return (
-    <div className="resume-container px-6 sm:px-10 transition-all ease-in-out duration-500 pt-20 pb-12">
+    <div className="resume-container px-6 sm:px-10 transition-all ease-in-out duration-500 pt-20 pb-12 min-h-screen">
       <div className="w-[90%] lg:w-[75%] xl:w-[75%] mx-auto">
         {/* Header */}
         <h2 className="text-4xl font-bold text-center font-jumbled">Resume</h2>
