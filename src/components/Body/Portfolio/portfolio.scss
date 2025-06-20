@@ -33,6 +33,7 @@
             aspect-ratio: 1 / 1; // Makes square containers
             overflow: hidden;
             border-radius: 0.5rem;
+            background-color: themed("bgSofter");
 
             img {
               width: 100%;

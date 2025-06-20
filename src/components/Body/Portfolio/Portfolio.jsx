@@ -17,6 +17,8 @@ import ERP from "../../../assets/img/projects/ERP.png";
 import krweather from "../../../assets/img/projects/krweather.png";
 import "./portfolio.scss";
 import LaunchIcon from "@mui/icons-material/Launch";
+
+import AnimatedSection from "../../utilities/AnimatedSection";
 const Portfolio = () => {
   const [projType, setProjType] = useState("All");
 
@@ -145,74 +147,78 @@ const Portfolio = () => {
 
   return (
     <div className="portfolio-container px-10 transition-all ease-in-out duration-500 pt-25 pb-10">
-      <div className="w-[90%] lg:w-[75%] xl:w-[75%] mx-auto mb-12">
-        <div className="portfolio-header my-3 text-center">
-          <h2 className="font-jumbled">Portfolio</h2>
-          <div className="text-center mx-auto justify-center items-center">
-            <svg
-              className="mx-auto text-center w-[300px] curved-line"
-              viewBox="0 0 300 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M 0,10 C 60,0 90,20 150,10 C 210,0 240,20 300,10"
-                fill="none"
-                strokeWidth="2"
-              ></path>
-            </svg>
+      <AnimatedSection direction="down">
+        <div className="w-[90%] lg:w-[75%] xl:w-[75%] mx-auto mb-12">
+          <div className="portfolio-header my-3 text-center">
+            <h2 className="font-jumbled">Portfolio</h2>
+            <div className="text-center mx-auto justify-center items-center">
+              <svg
+                className="mx-auto text-center w-[300px] curved-line"
+                viewBox="0 0 300 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M 0,10 C 60,0 90,20 150,10 C 210,0 240,20 300,10"
+                  fill="none"
+                  strokeWidth="2"
+                ></path>
+              </svg>
+            </div>
+
+            {/* Category Navigation */}
+            <nav className="justify-between align-middle items-center w-[50%] mx-auto mt-5">
+              <ul className="flex flex-row justify-between">
+                {categories.map((category) => (
+                  <li
+                    key={category}
+                    className={`cursor-pointer px-3 py-1 rounded transition-all duration-300 ${
+                      projType === category
+                        ? "bg-gray-800 text-white"
+                        : "hover:bg-gray-200"
+                    }`}
+                    onClick={() => setProjType(category)}
+                  >
+                    {category}
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
 
-          {/* Category Navigation */}
-          <nav className="justify-between align-middle items-center w-[50%] mx-auto mt-5">
-            <ul className="flex flex-row justify-between">
-              {categories.map((category) => (
-                <li
-                  key={category}
-                  className={`cursor-pointer px-3 py-1 rounded transition-all duration-300 ${
-                    projType === category
-                      ? "bg-gray-800 text-white"
-                      : "hover:bg-gray-200"
-                  }`}
-                  onClick={() => setProjType(category)}
-                >
-                  {category}
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-
-        <div className="portfolio-body">
-          <div className="images-div grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-y-7 gap-x-4">
-            {filteredItems.map((item, i) => (
-              <div className="img-box col-span-1" key={i}>
-                <div className="img-container">
-                  <img src={item.src} alt={item.label} />
-                  {item.description && (
-                    <div className="description cursor-pointer flex flex-col">
-                      <span className="text-xs text-justify">
-                        {item.description}
-                      </span>
-                      {item.site && (
-                        <a
-                          href={item.site}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="mt-1  hover:underline inline-flex items-center gap-1 text-xl"
-                        >
-                          Visit Site
-                          <LaunchIcon fontSize="small" />
-                        </a>
+          <div className="portfolio-body">
+            <div className="images-div grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-y-7 gap-x-4">
+              {filteredItems.map((item, i) => (
+                <AnimatedSection direction="top">
+                  <div className="img-box col-span-1" key={i}>
+                    <div className="img-container">
+                      <img src={item.src} alt={item.label} />
+                      {item.description && (
+                        <div className="description cursor-pointer flex flex-col">
+                          <span className="text-xs text-justify">
+                            {item.description}
+                          </span>
+                          {item.site && (
+                            <a
+                              href={item.site}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="mt-1  hover:underline inline-flex items-center gap-1 text-xl"
+                            >
+                              Visit Site
+                              <LaunchIcon fontSize="small" />
+                            </a>
+                          )}
+                        </div>
                       )}
                     </div>
-                  )}
-                </div>
-                <span className="block mt-2 text-center">{item.label}</span>
-              </div>
-            ))}
+                    <span className="block mt-2 text-center">{item.label}</span>
+                  </div>
+                </AnimatedSection>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </AnimatedSection>
     </div>
   );
 };
