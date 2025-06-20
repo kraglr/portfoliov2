@@ -30,7 +30,7 @@
 // --- Your themed and skill-box specific styles ---
 .skills-container {
   @include themify($themes) {
-    background-color: themed("bgSoft");
+    // background-color: themed("bgSoft");
 
     // --- Themed styles for Slick Carousel Arrows and Dots ---
     .slick-slider {
@@ -67,7 +67,7 @@
     // --- End of Themed styles for Slick Carousel Arrows and Dots ---
 
     .skill-box {
-      background-color: themed("bg");
+      background-color: themed("bgSoft");
       padding: 0.6rem 1rem;
       border-radius: 12.5px;
       height: 100% !important;

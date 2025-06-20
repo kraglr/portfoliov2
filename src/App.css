@@ -31,10 +31,11 @@
 }
 
 #root {
-  max-width: 100vw;
+  width: 100%;
+  /* max-width: 99vw; */
   height: 100vh;
   background-color: var(--current-bgSofter);
-  /* overflow: hidden; */
+  /* overflow-x: visible; */
 }
 /* Default dark mode background */
 /* App.css or your main global CSS file */

@@ -70,7 +70,7 @@ function App() {
   }, []);
 
   return (
-    <div className={`theme-${darkMode ? "dark" : "light"} font-sans`}>
+    <div className={`theme-${darkMode ? "dark" : "light"} font-sans relative `}>
       <header className="fixed top-0 right-0 lg:top-30 lg:left-10 lg:right-auto z-50 px-3 py-2">
         <Navigation
           scrollToSection={scrollToSection}
@@ -79,8 +79,12 @@ function App() {
         />
       </header>
 
-      <main className="w-full">
-        <section id="home" ref={homeRef} className="w-[100%]">
+      <main className=" overflow-x-hidden ">
+        <section
+          id="home"
+          ref={homeRef}
+          className="overflow-x-hidden max-w-full"
+        >
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -91,48 +95,36 @@ function App() {
           </motion.div>
         </section>
 
-        <section id="about" ref={aboutRef} className="w-[100%]">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            <About />
-          </motion.div>
+        <section
+          id="about"
+          ref={aboutRef}
+          className="overflow-x-hidden max-w-full"
+        >
+          <About />
         </section>
 
-        <section id="resume" ref={resumeRef}>
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            <Resume />
-          </motion.div>
+        <section
+          id="resume"
+          ref={resumeRef}
+          className="overflow-x-hidden max-w-full"
+        >
+          <Resume />
         </section>
 
-        <section id="portfolio" ref={portRef} className="w-[100%]">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            <Portfolio />
-          </motion.div>
+        <section
+          id="portfolio"
+          ref={portRef}
+          className="overflow-x-hidden max-w-full"
+        >
+          <Portfolio />
         </section>
 
-        <section id="contact" ref={contactRef}>
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            <Contact />
-          </motion.div>
+        <section
+          id="contact"
+          ref={contactRef}
+          className="overflow-x-hidden max-w-full"
+        >
+          <Contact />
         </section>
 
         {/* <section

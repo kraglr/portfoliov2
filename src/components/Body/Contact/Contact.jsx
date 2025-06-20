@@ -56,7 +56,7 @@ const Contact = () => {
               </div>
             </div>
             <div className="col-span-1  mx-auto py-10 justify-center align-middle">
-              <div class="social-links flex justify-center">
+              <div className="social-links flex justify-center">
                 <a href="https://www.linkedin.com/in/aguilar-kier-luna">
                   <LinkedInIcon />
                 </a>

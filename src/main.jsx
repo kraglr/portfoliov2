@@ -4,11 +4,14 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css"; // Or App.css if that's your main CSS
 import { DarkModeContextProvider } from "./contexts/darkModeContext.jsx";
+import { ScrollAnimationProvider } from "./contexts/ScrollAnimationContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <DarkModeContextProvider>
-      <App />
+      <ScrollAnimationProvider>
+        <App />
+      </ScrollAnimationProvider>
     </DarkModeContextProvider>
   </React.StrictMode>
 );
