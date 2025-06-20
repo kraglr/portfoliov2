@@ -1,8 +1,9 @@
 @import "../../../styles.scss";
 
 #home {
-  min-width: 100vw;
-  // min-height: 100vh;
+  // min-width: 100vw;
+  width: 100%;
+  min-height: 100vh;
   // height: 100vh;
   // Use flexbox to center the content div within the home section
   display: flex;

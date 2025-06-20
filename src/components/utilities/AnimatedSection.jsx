@@ -44,6 +44,7 @@ const AnimatedSection = ({ children, direction = "right", delay = 0 }) => {
 
   return (
     <motion.div
+      className="w-full"
       ref={ref}
       initial={{ opacity: 0, x: initial.x, y: initial.y }}
       animate={controls}
