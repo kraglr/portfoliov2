@@ -152,91 +152,89 @@ const Portfolio = () => {
 
   return (
     <div className="portfolio-container px-10 transition-all ease-in-out duration-500 pt-25 pb-10">
-      <AnimatedSection direction="down">
-        <div className="w-[90%] lg:w-[75%] xl:w-[75%] mx-auto mb-12">
-          <div className="portfolio-header my-3 text-center">
-            <h2 className="font-jumbled">Portfolio</h2>
-            <div className="text-center mx-auto justify-center items-center">
-              <svg
-                className="mx-auto text-center w-[300px] curved-line"
-                viewBox="0 0 300 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M 0,10 C 60,0 90,20 150,10 C 210,0 240,20 300,10"
-                  fill="none"
-                  strokeWidth="2"
-                ></path>
-              </svg>
-            </div>
-
-            {/* Category Navigation */}
-            <nav className="justify-between align-middle items-center w-[50%] mx-auto mt-5">
-              <ul className="flex flex-row justify-between">
-                {categories.map((category) => (
-                  <li
-                    key={category}
-                    className={`cursor-pointer px-3 py-1 rounded transition-all duration-300 ${
-                      projType === category
-                        ? "bg-gray-800 text-white"
-                        : "hover:bg-gray-200"
-                    }`}
-                    onClick={() => setProjType(category)}
-                  >
-                    {category}
-                  </li>
-                ))}
-              </ul>
-            </nav>
+      <div className="w-[90%] lg:w-[75%] xl:w-[75%] mx-auto mb-12">
+        <div className="portfolio-header my-3 text-center">
+          <h2 className="font-jumbled">Portfolio</h2>
+          <div className="text-center mx-auto justify-center items-center">
+            <svg
+              className="mx-auto text-center w-[300px] curved-line"
+              viewBox="0 0 300 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 0,10 C 60,0 90,20 150,10 C 210,0 240,20 300,10"
+                fill="none"
+                strokeWidth="2"
+              ></path>
+            </svg>
           </div>
 
-          <div className="portfolio-body">
-            <div className="images-div grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-y-7 gap-x-4">
-              {filteredItems.map((item, i) => (
-                <AnimatedSection direction="top" key={i}>
-                  <div className="img-box col-span-1">
-                    <div className="img-container relative w-full aspect-square overflow-hidden rounded-xl shadow-md">
-                      {!loadedImages[i] && (
-                        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 z-10">
-                          <div className="w-6 h-6 border-4 border-t-transparent border-gray-600 rounded-full animate-spin"></div>
-                        </div>
-                      )}
-                      <img
-                        src={item.src}
-                        alt={item.label}
-                        loading="lazy"
-                        className={`w-full h-full object-cover transition-opacity duration-500 ${
-                          loadedImages[i] ? "opacity-100" : "opacity-0"
-                        }`}
-                        onLoad={() => handleImageLoad(i)}
-                      />
-                      {item.description && (
-                        <div className="description cursor-pointer flex flex-col mt-2">
-                          <span className="text-xs text-justify">
-                            {item.description}
-                          </span>
-                          {item.site && (
-                            <a
-                              href={item.site}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="mt-1 hover:underline inline-flex items-center gap-1 text-xl"
-                            >
-                              Visit Site
-                              <LaunchIcon fontSize="small" />
-                            </a>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                    <span className="block mt-2 text-center">{item.label}</span>
-                  </div>
-                </AnimatedSection>
+          {/* Category Navigation */}
+          <nav className="justify-between align-middle items-center w-[50%] mx-auto mt-5">
+            <ul className="flex flex-row justify-between">
+              {categories.map((category) => (
+                <li
+                  key={category}
+                  className={`cursor-pointer px-3 py-1 rounded transition-all duration-300 ${
+                    projType === category
+                      ? "bg-gray-800 text-white"
+                      : "hover:bg-gray-200"
+                  }`}
+                  onClick={() => setProjType(category)}
+                >
+                  {category}
+                </li>
               ))}
-            </div>
+            </ul>
+          </nav>
+        </div>
+
+        <div className="portfolio-body">
+          <div className="images-div grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-y-7 gap-x-4">
+            {filteredItems.map((item, i) => (
+              <AnimatedSection direction="top" key={i}>
+                <div className="img-box col-span-1">
+                  <div className="img-container relative w-full aspect-square overflow-hidden rounded-xl shadow-md">
+                    {!loadedImages[i] && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-gray-100 z-10">
+                        <div className="w-6 h-6 border-4 border-t-transparent border-gray-600 rounded-full animate-spin"></div>
+                      </div>
+                    )}
+                    <img
+                      src={item.src}
+                      alt={item.label}
+                      loading="lazy"
+                      className={`w-full h-full object-cover transition-opacity duration-500 ${
+                        loadedImages[i] ? "opacity-100" : "opacity-0"
+                      }`}
+                      onLoad={() => handleImageLoad(i)}
+                    />
+                    {item.description && (
+                      <div className="description cursor-pointer flex flex-col mt-2">
+                        <span className="text-xs text-justify">
+                          {item.description}
+                        </span>
+                        {item.site && (
+                          <a
+                            href={item.site}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-1 hover:underline inline-flex items-center gap-1 text-xl"
+                          >
+                            Visit Site
+                            <LaunchIcon fontSize="small" />
+                          </a>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                  <span className="block mt-2 text-center">{item.label}</span>
+                </div>
+              </AnimatedSection>
+            ))}
           </div>
         </div>
-      </AnimatedSection>
+      </div>
     </div>
   );
 };

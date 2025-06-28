@@ -51,7 +51,7 @@ const Home = React.forwardRef((props, ref) => {
       {/* Foreground Text Layer */}
       <div className="bg-text grid xl:grid-cols-3 lg:grid-cols-3 grid-cols-1 w-[90%] max-w-7xl mx-auto h-full p-8 relative z-10 text-white">
         {/* Left Column */}
-        <div className="col-span-2 flex flex-col justify-center space-y-6 px-25">
+        <div className="col-span-2 flex flex-col justify-center space-y-6 lg:px-25 px-3">
           {/* Typing Animation */}
           <h3 className="md:text-3xl text-xl font-bold text-center sm:text-left">
             <Typewriter
