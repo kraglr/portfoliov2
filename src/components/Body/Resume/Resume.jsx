@@ -14,20 +14,20 @@ const ResumeItem = ({
   duties,
 }) => {
   return (
-    <div className="resume-item-container relative pl-12 pb-8 last:pb-0">
+    <div className="relative pb-8 pl-12 resume-item-container last:pb-0">
       <div className="absolute left-0 top-0 h-full w-[2px] bg-blue-300"></div>
       <div className="absolute left-[-6px] top-0 h-4 w-4 rounded-full bg-blue-300 border-2 border-white dark:border-gray-800"></div>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-x-4 items-start">
+      <div className="grid items-start grid-cols-1 md:grid-cols-4 gap-x-4">
         <div
           className={type === "education" ? "md:col-span-3" : "md:col-span-4"}
         >
-          <h4 className="text-xl font-bold mb-1">{title}</h4>
-          <h5 className="text-lg font-semibold mb-1">
+          <h4 className="mb-1 text-xl font-bold">{title}</h4>
+          <h5 className="mb-1 text-lg font-semibold">
             {period} <span className="italic">({institution})</span>
           </h5>
           {description && <p className="mb-3">{description}</p>}
           {duties && duties.length > 0 && (
-            <ul className="list-disc pl-5 space-y-1 text-base">
+            <ul className="pl-5 space-y-1 text-base list-disc">
               {duties.map((duty, i) => (
                 <li key={i}>{duty}</li>
               ))}
@@ -41,11 +41,11 @@ const ResumeItem = ({
 
 const Resume = () => {
   return (
-    <div className="resume-container px-6 sm:px-10 transition-all ease-in-out duration-500 pt-20 pb-12 min-h-screen">
+    <div className="min-h-screen px-6 pt-20 pb-12 transition-all duration-500 ease-in-out resume-container sm:px-10">
       <div className="w-[90%] lg:w-[75%] xl:w-[75%] mx-auto">
         {/* Header */}
         <h2 className="text-4xl font-bold text-center font-jumbled">Resume</h2>
-        <div className="text-center mx-auto justify-center items-center">
+        <div className="items-center justify-center mx-auto text-center">
           <svg
             className="mx-auto text-center w-[300px] curved-line"
             viewBox="0 0 300 20"
@@ -60,7 +60,7 @@ const Resume = () => {
         </div>
 
         {/* Intro Paragraph */}
-        <p className="text-center text-lg mt-6 mb-6 max-w-4xl mx-auto">
+        <p className="max-w-4xl mx-auto mt-6 mb-6 text-lg text-center">
           Passionate full-stack developer with a strong foundation in ERP and
           healthcare systems. Proven ability to lead projects, design scalable
           architectures, and build efficient web solutions that solve real-world
@@ -68,7 +68,7 @@ const Resume = () => {
         </p>
 
         {/* Resume Button */}
-        {/* <div className="text-center mb-12">
+        {/* <div className="mb-12 text-center">
             <a
               href="https://github.com/kraglr/portfoliov2/blob/942400989aafa2e93afba1b4e58487833a89bacb/public/files/RESUME_KLA.pdf"
               download
@@ -80,17 +80,17 @@ const Resume = () => {
 
         {/* Skills */}
         <AnimatedSection direction="top" delay={0.2} mode="wait">
-          <h3 className="text-3xl font-semibold mb-6 border-b-2 border-yellow-500 pb-2 inline-block">
+          <h3 className="inline-block pb-2 mb-6 text-3xl font-semibold border-b-2 border-yellow-500">
             Technical Skills
           </h3>
           <Skills />
         </AnimatedSection>
 
         {/* Education & Experience */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-16 mt-16">
+        <div className="grid grid-cols-1 mt-16 lg:grid-cols-2 gap-x-12 gap-y-16">
           {/* Education */}
           <div>
-            <h3 className="text-3xl font-semibold mb-6 border-b-2 border-yellow-500 pb-2 inline-block">
+            <h3 className="inline-block pb-2 mb-6 text-3xl font-semibold border-b-2 border-yellow-500">
               Education
             </h3>
             <AnimatedSection mode="wait" direction="down">
@@ -105,7 +105,7 @@ const Resume = () => {
           </div>
 
           <div>
-            <h3 className="text-3xl font-semibold mb-6 border-b-2 border-yellow-500 pb-2 inline-block">
+            <h3 className="inline-block pb-2 mb-6 text-3xl font-semibold border-b-2 border-yellow-500">
               Professional Experience
             </h3>
             <AnimatedSection mode="wait" direction="down">

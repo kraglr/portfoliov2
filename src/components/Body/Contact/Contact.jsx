@@ -12,7 +12,7 @@ const Contact = () => {
     <div className="contact-container mx-auto text-center py-16 min-h-screen">
       <div className="w-[90%] lg:w-[75%] xl:w-[75%] mx-auto py-10">
         <div className="contact-header">
-          <h2 className="text-4xl font-bold font-jumbled  ">Contact Us</h2>
+          <h2 className="text-4xl font-bold font-jumbled  ">Contact Me</h2>
           <div className="text-center mx-auto justify-center items-center">
             <svg
               className="mx-auto text-center w-[300px] curved-line"

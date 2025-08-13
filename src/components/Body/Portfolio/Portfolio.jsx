@@ -204,13 +204,13 @@ const Portfolio = () => {
                       src={item.src}
                       alt={item.label}
                       loading="lazy"
-                      className={`w-full h-full object-cover transition-opacity duration-500 ${
+                      className={`w-full h-full object-cover transition-opacity duration-500  ${
                         loadedImages[i] ? "opacity-100" : "opacity-0"
                       }`}
                       onLoad={() => handleImageLoad(i)}
                     />
                     {item.description && (
-                      <div className="description cursor-pointer flex flex-col mt-2">
+                      <div className="description absolute inset-0 bg-[rgba(0,0,0,0.6))] text-white items-center justify-center opacity-0 transition-opacity duration-500 ease-in p-0.5 text-center text-[.875rem]  cursor-pointer flex flex-col mt-2">
                         <span className="text-xs text-justify">
                           {item.description}
                         </span>
